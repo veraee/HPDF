@@ -95,13 +95,8 @@ size t
       Nil     -> 0
 
 -- | /O(min(n,W))/. Lookup the value at a key in the map.
-lookup :: (Monad m) => Key a -> PDFTree a -> m a
-lookup k t = case lookup' k t of
-    Just x -> return x
-    Nothing -> fail "Data.PDFTree.lookup: Key not found"
-
-lookup' :: Key a -> PDFTree a -> Maybe a
-lookup' k t
+lookup :: Key a -> PDFTree a -> Maybe a
+lookup k t
   = let nk = natFromInt k  in seq nk (lookupN nk t)
 
 lookupN :: Nat -> PDFTree a -> Maybe a

@@ -23,7 +23,7 @@ module Graphics.PDF.Fonts.AFMParser(
     ) where 
 
 import Text.ParserCombinators.Parsec hiding(space)
-import Text.Parsec(modifyState,getState)
+import Text.Parsec(modifyState)
 import Text.Parsec.Prim(parserZero)
 import Data.Char(toUpper)
 import qualified Data.Map.Strict as M

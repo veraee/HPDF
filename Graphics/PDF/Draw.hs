@@ -252,11 +252,9 @@ pdfDictMember k (PDFDictionary d)  = M.member k d
 -- | Get a new resource name
 supplyName :: Draw String
 supplyName = do
-    xs <- gets supplyNames
+    xs <- gets supplyNames -- infinite list
     modifyStrict $ \s -> s {supplyNames = tail xs}
-    if xs == []
-        then return ""
-        else return (head xs)
+    return (head xs)
     
 emptyDrawState :: Int -> DrawState
 emptyDrawState ref = 
