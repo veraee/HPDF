@@ -6,7 +6,7 @@ License-file:LICENSE
 Copyright: Copyright (c) 2007-2016, alpheccar.org
 category: Graphics
 synopsis: Generation of PDF documents
-maintainer: misc@NOSPAMalpheccar.org
+maintainer: sylvain@haskus.fr
 build-type: Simple
 tested-with: GHC==7.10.2
 homepage: http://www.alpheccar.org
@@ -44,7 +44,7 @@ data-files:
 
 source-repository head
   type:     git
-  location: https://github.com/alpheccar/HPDF.git
+  location: https://github.com/hsyl20/HPDF.git
 
 Test-Suite HPDF-Tests
   Type:              exitcode-stdio-1.0
