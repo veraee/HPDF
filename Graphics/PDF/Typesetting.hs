@@ -451,8 +451,8 @@ drawTextBox x y w h ori ps p t =
           N -> (x - wc/2.0,y)
           S -> (x - wc/2.0,y + hc)
         box = withNewContext $ do
-    	   applyMatrix $ translate (dx :+ dy)
-    	   d
+           applyMatrix $ translate (dx :+ dy)
+           d
         r = Rectangle ((xa + dx) :+ (ya + dy)) ((xb + dx) :+ (yb + dy))
     in
     (r,box)

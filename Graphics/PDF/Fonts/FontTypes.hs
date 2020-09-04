@@ -11,14 +11,15 @@
 -- Private types for the fonts
 ---------------------------------------------------------
 -- #hide
-module Graphics.PDF.Fonts.FontTypes(
-	  GlyphSize
-    , FontSize 
-    , FontStructure(..)
-    , GlyphPair(..)
-    , FontData(..)
-    , mkFlags
-	) where
+module Graphics.PDF.Fonts.FontTypes
+   ( GlyphSize
+   , FontSize 
+   , FontStructure(..)
+   , GlyphPair(..)
+   , FontData(..)
+   , mkFlags
+   )
+where
 
 import Graphics.PDF.LowLevel.Types
 import qualified Data.Map.Strict as M

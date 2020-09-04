@@ -65,7 +65,7 @@ mkType1FontStructure pdfRef (AFMData f)  = do
 
 instance PdfResourceObject Type1Font where
    toRsrc (Type1Font f ref) =  
-   	        AnyPdfObject . PDFDictionary . M.fromList $
+                AnyPdfObject . PDFDictionary . M.fromList $
                            [(PDFName "Type",AnyPdfObject . PDFName $ "Font")
                            , (PDFName "Subtype",AnyPdfObject . PDFName $ "Type1")
                            , (PDFName "BaseFont",AnyPdfObject . PDFName $ baseFont f)
@@ -82,7 +82,7 @@ instance PdfResourceObject Type1Font where
             widths = map findWidth [firstChar .. lastChar] 
             bbox = map AnyPdfObject .fontBBox $ f 
             descriptor = PDFDictionary . M.fromList $ 
-          	  [ (PDFName "Type",AnyPdfObject . PDFName $ "Font")
+              [ (PDFName "Type",AnyPdfObject . PDFName $ "Font")
               , (PDFName "Subtype",AnyPdfObject . PDFName $ "Type1")
               , (PDFName "BaseFont",AnyPdfObject . PDFName $ baseFont f)
               , (PDFName "FontFile", AnyPdfObject ref)
@@ -92,4 +92,4 @@ instance PdfResourceObject Type1Font where
               , (PDFName "Ascent",AnyPdfObject . PDFInteger . fromIntegral $ ascent f)
               , (PDFName "Descent",AnyPdfObject . PDFInteger . fromIntegral $ descent f)
               , (PDFName "CapHeight",AnyPdfObject . PDFInteger . fromIntegral $ capHeight f)
-          	  ]
+                  ]

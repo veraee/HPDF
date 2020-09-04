@@ -4,39 +4,40 @@ For detailed examples, download the tar.gz package from Hackage and look at the
 test.hs in folder Test.
 
 -}
-module Graphics.PDF.Documentation(
-	-- * Creating a document
-	-- $creating
+module Graphics.PDF.Documentation (
+   -- * Creating a document
+   -- $creating
+   
+   -- * Adding pages
+   -- $pages
+   
+   -- * Creating the page content
+   -- $content
+   
+   -- * Text
+   -- $text
+   
+   -- ** MonadStyle
+   -- $monadstyle
+   
+   -- * Geometry
+   -- $geometry
+   
+   -- * X Form
+   -- $xform
+   
+   -- * Image
+   -- $image
+   
+   -- * Annotations
+   -- $annotations
+   
+   -- * Warning
+   -- $warning
+   )
+where
 
-	-- * Adding pages
-	-- $pages
-
-	-- * Creating the page content 
-	-- $content
-
-	-- * Text 
-	-- $text
-
-	-- ** MonadStyle 
-	-- $monadstyle
-
-	-- * Geometry 
-	-- $geometry
-
-	-- * X Form 
-	-- $xform
-
-	-- * Image 
-	-- $image
-
-	-- * Annotations 
-	-- $annotations
-
-	-- * Warning 
-	-- $warning
-	) where 
-
-{- $creating 
+{- $creating
 
 When you create a document, you must give some information for the PDF file like the author,
 the default size (the pages can use different sizes if specified) and if the document is compressed.
@@ -61,7 +62,7 @@ You can add pages and specify a hierarchical structure for the pages. This hiera
 of how you could add some pages and specify the table of contents:
 
 @
-myDocument :: 'PDF' () 
+myDocument :: 'PDF' ()
 myDocument = do
     page1 <- 'addPage' Nothing
     'newSection' ('toPDFString' \"Section\") Nothing Nothing $ do
@@ -84,8 +85,8 @@ To create content for a page, you have to use a page reference with 'drawWithPag
 Element of the 'Draw' monad are built with geometry, text and color primitives.
 
 @
-createPageContent :: 'PDFReference' 'PDFPage' -> Draw () 
-createPageContent page = 'drawWithPage' page $ do 
+createPageContent :: 'PDFReference' 'PDFPage' -> Draw ()
+createPageContent page = 'drawWithPage' page $ do
     'strokeColor' 'red'
     'setWidth' 0.5
     'stroke' $ 'Rectangle' 10 0 200 300
@@ -117,7 +118,7 @@ The library is thus supporting a higher level typesetting system with paragraph 
 Displaying a formatted text is done with 'displayFormattedText' and using a typesetting monad value:
 
 @
-'displayFormattedText' ('Rectangle' (10 :+ 0) (110 :+ 300)) 'NormalPara' 'Normal' $ do 
+'displayFormattedText' ('Rectangle' (10 :+ 0) (110 :+ 300)) 'NormalPara' 'Normal' $ do
    'paragraph' $ do
         'txt' $ \"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor \"
         'txt' $ \"incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud \"
@@ -157,7 +158,7 @@ different characters in a span of the same style.
 A 'Style' class used for sentence style. And a 'ParagraphStyle' to group together the paragraph style and the sentence
 style that can be used in this paragraph.
 
-Why the 'ComparableStyle' is used instead of the class Eq ? A style is containing information 
+Why the 'ComparableStyle' is used instead of the class Eq ? A style is containing information
 used for the font (size etc ...) but it can also contain additional information used by styling function (a styling
 function may draw a decoration). In that latter case, the additional information is changing the look of the sentence
 but not its layout : the font size is not changed. So, from a text point of view, the PDF text is drawn using the same
@@ -193,7 +194,7 @@ of the box containing the text is relative to some specific points in the drawin
 additional function is provided : 'drawTextBox'
 -}
 
-{- $monadstyle 
+{- $monadstyle
 
 The typesetting is similar to the TeX one with kern, glues and boxes. So, it means that any drawing
 can be used as a letter since any drawing can be contained in a box. The operators to draw boxes, glues are
@@ -252,13 +253,13 @@ patternTest page = do
          'fillAndStroke' $ 'Ellipse' 0 0 300 300
          'setColoredFillPattern' cp
          'fillAndStroke' $ 'Ellipse' 300 300 600 400
-         
- where 
+
+ where
        pattern = do
            'stroke' ('Ellipse' 0 0 100 50)
        'cpattern' = do
            'strokeColor' ('Rgb' 0 0 1)
-           'stroke' ('Ellipse' 0 0 100 50) 
+           'stroke' ('Ellipse' 0 0 100 50)
 @
 -}
 
@@ -299,7 +300,7 @@ testImage jpgf page =  do
 The 'JpegFile' value must be created in the 'IO' monad with:
 
 @
-Right jpg <- 'readJpegFile' \"logo.jpg\"  
+Right jpg <- 'readJpegFile' \"logo.jpg\"
 @
 
 Alternatively, jpegs can be compiled into your code. After converting a jpeg to a data URL, a 'JpegFile' can be created with:
@@ -312,7 +313,7 @@ The haskell code is just extracting the size of the image from the file. The ima
 
 -}
 
-{- $annotations 
+{- $annotations
 
 A pdf page can contain several kind of annotations like links, notes etc ... For instance, to define and
 display a link:
@@ -329,7 +330,7 @@ display a link:
 The PDF format is full of extensions. Depending on the viewer that you use some extensions may not be supported.
 It is always a good thing to test on a few viewers if you use complex features.
 
-Mobile viewers (tablets and phones) are generally focusing on a more portable and more restricted set of features. 
+Mobile viewers (tablets and phones) are generally focusing on a more portable and more restricted set of features.
 So, you may not be able to display you document on a mobile device if you use complex features.
 
 So, I repeat : test.

@@ -1,5 +1,5 @@
 Name: HPDF
-Version: 1.5.0
+Version: 1.5.1
 cabal-version: >=1.10
 License: BSD3
 License-file:LICENSE
@@ -18,9 +18,8 @@ extra-source-files:
   Test/Penrose.hs
   Test/test.hs
   README.md
-  NEWS.txt
   TODO.txt
-  changelog
+  changelog.md
 data-files:
   Core14_AFMs/Courier-Bold.afm
   Core14_AFMs/Helvetica-BoldOblique.afm
@@ -91,7 +90,7 @@ library
       hyphenation
   Default-language:  Haskell2010
 
-  ghc-options: -Wall -fno-warn-tabs -funbox-strict-fields  -O2
+  ghc-options: -Wall -funbox-strict-fields  -O2
 
   C-Sources:  
      c/conversion.c
@@ -117,8 +116,8 @@ library
      Graphics.PDF.Shading
      Graphics.PDF.Typesetting
      Graphics.PDF.Documentation
-     Paths_HPDF
   Other-Modules:
+     Paths_HPDF
      Graphics.PDF.LowLevel.Types
      Graphics.PDF.Fonts.FontTypes
      Graphics.PDF.Data.PDFTree

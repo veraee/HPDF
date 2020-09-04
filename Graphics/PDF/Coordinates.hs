@@ -69,8 +69,10 @@ projectY (_ :+ y) = (0 :+ y)
 -- e f 1
 -- @
        
-data Matrix = Matrix !PDFFloat !PDFFloat !PDFFloat !PDFFloat !PDFFloat !PDFFloat deriving (Eq, Show)
-		
+data Matrix
+   = Matrix !PDFFloat !PDFFloat !PDFFloat !PDFFloat !PDFFloat !PDFFloat
+   deriving (Eq, Show)
+
 instance Num Matrix where
     --  Matrix addition
     (+) (Matrix ma mb mc md me mf ) (Matrix na nb nc nd ne nf) = 
