@@ -6,4 +6,4 @@ test/afm
 test/*.o
 .HTF
 .stack-work
-
+dist-newstyle
