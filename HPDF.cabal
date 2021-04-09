@@ -20,8 +20,6 @@ extra-source-files:
   README.md
   TODO.txt
   changelog.md
-data-files:
-  Test/logo.jpg
 
 source-repository head
   type:     git
@@ -49,7 +47,6 @@ Executable HPDF-Demo
 
   Default-language:  Haskell2010
   Other-Modules:
-    Paths_HPDF
     Penrose
 
 library
@@ -101,7 +98,6 @@ library
      Graphics.PDF.Typesetting
      Graphics.PDF.Documentation
   Other-Modules:
-     Paths_HPDF
      Graphics.PDF.LowLevel.Types
      Graphics.PDF.Data.PDFTree
      Graphics.PDF.Data.Trie

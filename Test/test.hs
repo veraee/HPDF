@@ -26,8 +26,6 @@ import Network.URI
 import Data.Maybe(fromJust)
 import System.FilePath 
 
-import Paths_HPDF
-
 alpheccarURL = fromJust $ parseURI "http://www.alpheccar.org"
 
 fontDebug :: PDFFont -> T.Text -> Draw ()
@@ -688,7 +686,6 @@ testAll timesRoman timesBold helveticaBold symbol zapf jpg = do
     page14 <- addPage Nothing
     rawImage page14
     
-        
 main :: IO()
 main = do
     let rect = PDFRect 0 0 600 400
@@ -698,7 +695,7 @@ main = do
     Just symbol <- mkStdFont Symbol 
     Just zapf <- mkStdFont ZapfDingbats
 
-    logoPath <- getDataFileName $ "Test" </> "logo.jpg"
+    let logoPath = "Test/logo.jpg"
     Right jpg <- readJpegFile logoPath
     runPdf "demo.pdf" (standardDocInfo { author= "alpheccar éèçàü", compressed = False}) rect $ do
         testAll timesRoman timesBold helveticaBold symbol zapf jpg
