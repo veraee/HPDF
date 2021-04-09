@@ -1,5 +1,9 @@
 # Changelog for [`HPDF` package](http://hackage.haskell.org/package/HPDF)
 
+## 1.5.2
+
+   * Embed fonts and encodings
+
 ## 1.5.1
 
    * Fix JPEG support
