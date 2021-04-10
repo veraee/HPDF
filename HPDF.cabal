@@ -20,7 +20,6 @@ extra-source-files:
   README.md
   TODO.txt
   changelog.md
-data-files:
   Core14_AFMs/Courier-Bold.afm
   Core14_AFMs/Helvetica-BoldOblique.afm
   Core14_AFMs/Times-Bold.afm
