@@ -24,5 +24,5 @@ TO TEST THE LIBRARY
 > open demo.pdf
 
 ===
-oe 20211222
+oe 20211222 ttfparse 
 
